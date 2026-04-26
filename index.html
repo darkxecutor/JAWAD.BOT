@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>JAWAD.BOT | بوت واتساب احترافي - جواد</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/xCd3SSsZ/Whats-App-Image-2026-04-26-at-12-53-42-PM(1).jpg">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== INTRO SECTION ===== */
+        #intro {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            background: #000000;
+            transition: all 0.8s ease;
+        }
+
+        .main {
+            width: 92%;
+            max-width: 1200px;
+            animation: floatGlow 3s infinite alternate;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translateY(0px); filter: drop-shadow(0 0 10px rgba(165,148,249,0.2));}
+            100% { transform: translateY(-8px); filter: drop-shadow(0 0 25px rgba(165,148,249,0.5));}
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 48px;
+            padding: 42px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(165, 148, 249, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8), 0 0 0 1px rgba(115,103,177,0.2), 0 0 30px rgba(165,148,249,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .top-tags {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 34px;
+            flex-wrap: wrap;
+        }
+
+        .top-tags span {
+            font-size: 11px;
+            padding: 6px 18px;
+            border-radius: 40px;
+            background: rgba(115, 103, 177, 0.25);
+            border: 1px solid rgba(165, 148, 249, 0.6);
+            letter-spacing: 1px;
+            color: #A594F9;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .content {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .left h1 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #A594F9, #D9C8FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(165,148,249,0.3);
+        }
+
+        .desc {
+            margin: 18px 0 28px;
+            font-size: 16px;
+            color: #b9b9b9;
+            max-width: 460px;
+            line-height: 1.6;
+        }
+
+        .live-line span {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #7367B1;
+            font-weight: 600;
+            background: rgba(115,103,177,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .btn {
+            font-size: 13px;
+            padding: 10px 22px;
+            border-radius: 40px;
+            background: #111;
+            border: 1px solid #7367B1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cfd8dc;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            font-weight: 600;
+        }
+
+        .btn i { color: #A594F9; transition: 0.2s; }
+        .btn:hover { background: #1f1a2e; border-color: #A594F9; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(165,148,249,0.3); }
+        .btn:hover i { color: white; }
+
+        .site-link {
+            margin-top: 28px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 60px;
+            background: #0a0a0a;
+            border: 1px solid #7367B1;
+            color: #A594F9;
+            font-weight: 500;
+        }
+
+        .right {
+            background: linear-gradient(145deg, #0a0a0a, #000000);
+            border-radius: 32px;
+            padding: 28px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 20px 35px -8px black;
+            border: 1px solid #7367B1;
+        }
+
+        .right-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #7367B1;
+        }
+        .online { color: #A594F9; text-shadow: 0 0 5px #A594F9; }
+
+        .orbit-box {
+            width: 240px;
+            height: 240px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .orbit {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid #A594F9;
+            animation: spin 12s linear infinite;
+        }
+        .orbit i {
+            position: absolute;
+            background: #0d0b12;
+            color: #A594F9;
+            padding: 9px;
+            border-radius: 50%;
+            font-size: 14px;
+            box-shadow: 0 0 12px #7367B1;
+        }
+        .i1 { top: -12px; left: 50%; transform: translateX(-50%); }
+        .i2 { right: -12px; top: 50%; transform: translateY(-50%); }
+        .i3 { bottom: -12px; left: 50%; transform: translateX(-50%); }
+        .i4 { left: -12px; top: 50%; transform: translateY(-50%); }
+        .core {
+            position: absolute;
+            inset: 55px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #2a235a, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 35px rgba(165,148,249,0.5);
+            border: 1px solid #7367B1;
+        }
+        .core span { font-weight: 800; font-size: 16px; color: #A594F9; letter-spacing: 2px; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .stats { display: flex; gap: 18px; margin-top: 25px; }
+        .stats div { background: rgba(115,103,177,0.1); border-radius: 20px; padding: 14px; border: 1px solid #3a2e5a; backdrop-filter: blur(4px); }
+        .stats h4 { font-size: 24px; font-weight: 800; color: #A594F9; }
+        .stats p { font-size: 12px; color: #ccc; }
+
+        /* MAIN SITE */
+        #real-site { display: none; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 20px; }
+        .ul-list {
+            list-style: none; display: flex; gap: 0.8rem; padding: 10px 24px; border-radius: 80px;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(16px); border: 1px solid #7367B1;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5); flex-wrap: wrap; justify-content: center;
+        }
+        .ul-list li {
+            display: flex; align-items: center; gap: 8px; border-radius: 40px; padding: 8px 20px;
+            transition: all 0.25s ease; cursor: pointer;
+        }
+        .ul-list li a { text-decoration: none; color: #e0e0e0; font-size: 14px; font-weight: 600; }
+        .ul-list li i { color: #A594F9; font-size: 14px; }
+        .ul-list li:hover { background: rgba(165,148,249,0.2); transform: translateY(-2px); }
+        .ul-list li.active { background: linear-gradient(135deg, #7367B1, #2a235a); box-shadow: 0 0 18px #A594F9; }
+        .ul-list li.active a, .ul-list li.active i { color: white; }
+
+        /* HOME */
+        .home { padding: 150px 80px 80px; max-width: 1400px; margin: 0 auto; }
+        .home-container { display: flex; gap: 70px; align-items: center; flex-wrap: wrap; }
+        .home-section { flex: 1; }
+        .home-p { background: rgba(165,148,249,0.1); display: inline-block; border-radius: 60px; padding: 8px 20px; border: 1px solid #A594F9; color: #A594F9; font-weight: 600; margin-bottom: 30px; backdrop-filter: blur(8px); }
+        .info-home h1 { font-size: 68px; font-weight: 800; background: linear-gradient(135deg, #FFF, #A594F9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .info-home h3 { font-size: 32px; margin-bottom: 20px; color: #bcbcbc; font-weight: 500; }
+        .info-p p { line-height: 1.6; color: #cacaca; margin-bottom: 10px; }
+        .info-p2 { display: flex; gap: 28px; padding: 15px 0 25px; color: #A594F9; flex-wrap: wrap; }
+        .btnn { display: flex; gap: 20px; padding-bottom: 40px; flex-wrap: wrap; }
+        .btn-home1, .btn-home2 {
+            padding: 14px 32px; border-radius: 50px; font-weight: 800; display: flex; align-items: center;
+            gap: 12px; cursor: pointer; transition: all 0.3s ease; font-size: 15px;
+        }
+        .btn-home1 { background: linear-gradient(95deg, #7367B1, #2a235a); border: none; color: white; box-shadow: 0 5px 15px rgba(115,103,177,0.4); }
+        .btn-home1:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(165,148,249,0.5); background: linear-gradient(95deg, #8a7ac9, #3c2e6e); }
+        .btn-home2 { background: transparent; border: 2px solid #A594F9; color: #A594F9; }
+        .btn-home2:hover { background: #7367B1; color: white; border-color: #7367B1; transform: translateY(-3px); }
+        .follow { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+        .follow ul { display: flex; gap: 25px; list-style: none; }
+        .follow ul a { font-size: 26px; color: #A594F9; transition: 0.25s; }
+        .follow ul a:hover { color: white; transform: translateY(-5px); display: inline-block; text-shadow: 0 0 12px #A594F9; }
+        .home img { width: 380px; border-radius: 32px; box-shadow: 0 25px 45px rgba(165,148,249,0.2); border: 1px solid #7367B1; transition: 0.4s; }
+        .home img:hover { transform: scale(1.02); border-color: #A594F9; }
+
+        /* ABOUT  */
+        .about, .project, .services, #contact { padding: 80px 80px; max-width: 1400px; margin: 0 auto; }
+        .about-info { display: flex; gap: 20px; align-items: center; margin-bottom: 50px; }
+        .img-about img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #A594F9; box-shadow: 0 0 20px #7367B1; object-fit: cover; }
+        .info-text h5 { font-size: 22px; color: #A594F9; }
+        .about h3 { font-size: 38px; color: #7367B1; margin-bottom: 45px; font-weight: 800; letter-spacing: -1px; }
+        .about-info2 { display: flex; gap: 70px; flex-wrap: wrap; }
+        .about-text p { margin-bottom: 18px; line-height: 1.7; color: #c2c2c2; }
+        .about-text span { color: #A594F9; font-weight: 800; }
+        .photo-container { flex: 1; position: relative; background: rgba(115,103,177,0.1); border-radius: 28px; padding: 18px; border: 1px solid #7367B1; backdrop-filter: blur(10px); }
+        .photo-container img { width: 100%; border-radius: 20px; }
+        .tape { position: absolute; width: 100px; height: 35px; background: #1f1a2e; border-radius: 12px; opacity: 0.9; border: 1px solid #A594F9; }
+        .tape1 { top: -15px; left: 20px; transform: rotate(-12deg); }
+        .tape2 { bottom: -15px; right: 20px; transform: rotate(6deg); }
+
+        /* PROJECTS */
+        .project > p, .services > p { color: #A594F9; font-weight: 700; letter-spacing: 3px; margin-bottom: 10px; }
+        .project h1, .services h1, .section-title { font-size: 52px; font-weight: 800; color: #A594F9; margin-bottom: 15px; }
+        .projects-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 40px; margin-top: 40px; }
+        .project-card {
+            background: rgba(0,0,0,0.7); border: 1px solid #3a2e5a; border-radius: 32px; padding: 28px;
+            backdrop-filter: blur(12px); transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .project-card:hover { transform: translateY(-12px); border-color: #A594F9; box-shadow: 0 25px 40px -12px rgba(165,148,249,0.3); background: rgba(10,10,10,0.85); }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 24px; margin-bottom: 20px; border: 1px solid #2a235a; }
+        .project-card h3 { color: #A594F9; font-size: 26px; margin-bottom: 12px; }
+        .skills { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0 20px; }
+        .skills a { padding: 6px 18px; background: #111; border-radius: 40px; font-size: 12px; color: #A594F9; border: 1px solid #7367B1; transition: 0.2s; text-decoration: none; }
+        .skills a:hover { background: #7367B1; color: white; transform: scale(1.02); }
+        .btns .btn { background: #0f0f0f; border: 1px solid #7367B1; padding: 8px 20px; font-size: 13px; text-decoration: none; color: white; border-radius: 30px; }
+
+        /* SERVICES */
+        .services-grid { display: flex; gap: 45px; justify-content: center; flex-wrap: wrap; }
+        .service-card {
+            background: rgba(0,0,0,0.7); border: 1px solid #7367B1; border-radius: 40px; padding: 45px 35px;
+            backdrop-filter: blur(12px); text-align: center; transition: all 0.35s; width: 100%; max-width: 380px;
+        }
+        .service-card:hover { transform: translateY(-8px); border-color: #A594F9; box-shadow: 0 20px 35px rgba(165,148,249,0.2); }
+        .service-icon { width: 100px; height: 100px; background: linear-gradient(145deg, #7367B1, #2a235a); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 44px; color: white; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        .service-card h3 { font-size: 28px; color: #A594F9; margin-bottom: 15px; }
+        .service-features span { background: #1e1a2a; padding: 6px 18px; border-radius: 60px; font-size: 12px; color: #A594F9; border: 1px solid #7367B1; margin: 5px; display: inline-block; }
+
+        /* CONTACT & WHATSAPP CARD */
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .contact-item { display: flex; gap: 18px; margin-bottom: 25px; align-items: center; color: #A594F9; font-weight: 600; }
+        .contact-item i { font-size: 28px; color: #7367B1; width: 40px; }
+        .social-links { display: flex; gap: 20px; margin-top: 30px; }
+        .social-link { width: 58px; height: 58px; border-radius: 50%; background: #0a0a0a; border: 1px solid #A594F9; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: all 0.3s; color: #A594F9; }
+        .social-link:hover { background: #7367B1; color: white; transform: translateY(-5px) rotate(5deg); box-shadow: 0 8px 20px #A594F9; border-color: white; }
+
+        .contact-form { background: rgba(0,0,0,0.6); border: 1px solid #7367B1; border-radius: 40px; padding: 45px; backdrop-filter: blur(14px); }
+        .form-group input, .form-group textarea { width: 100%; padding: 16px 20px; background: #111; border: 1px solid #3a2e5a; border-radius: 28px; color: white; font-family: 'Cairo'; transition: 0.25s; }
+        .form-group input:focus, .form-group textarea:focus { border-color: #A594F9; outline: none; box-shadow: 0 0 15px rgba(165,148,249,0.4); }
+        button[type="submit"] { background: linear-gradient(135deg, #7367B1, #2a235a); padding: 16px; border-radius: 50px; font-weight: 800; font-size: 16px; border: none; color: white; cursor: pointer; transition: 0.25s; width: 100%; }
+        button[type="submit"]:hover { background: #A594F9; color: black; transform: scale(1.02); letter-spacing: 1px; }
+
+        .whatsapp-card {
+            margin-top: 70px;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(20px);
+            border-radius: 48px;
+            padding: 40px;
+            border: 1px solid #A594F9;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 2px rgba(115,103,177,0.2);
+            transition: all 0.3s;
+        }
+        .whatsapp-card:hover { border-color: #A594F9; box-shadow: 0 25px 45px rgba(165,148,249,0.2); }
+        .whatsapp-card h2 { color: #A594F9; font-size: 32px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .whatsapp-card p { line-height: 1.8; margin-bottom: 20px; color: #ddd; font-size: 15px; }
+        .channel-link { display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: #000; padding: 14px 32px; border-radius: 60px; font-weight: 800; text-decoration: none; transition: 0.3s; font-size: 16px; margin-top: 10px; box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
+        .channel-link:hover { background: #128C7E; color: white; transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px rgba(37,211,102,0.3); }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1000px) { .home, .about, .project, .services, #contact { padding: 80px 30px; } .contact-content { grid-template-columns: 1fr; } .info-home h1 { font-size: 48px; } }
+        @media (max-width: 768px) { .home img { width: 100%; } .ul-list li { padding: 5px 12px; } .ul-list li a { font-size: 12px; } }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <div class="main">
+            <div class="card">
+                <div class="top-tags"><span>⚡ JAWAD.BOT CORE</span><span>WHATSAPP AI</span><span>STATUS: ACTIVE</span></div>
+                <div class="content">
+                    <div class="left">
+                        <h1>JAWAD.BOT<br>ثورة البوتات</h1>
+                        <p class="desc">بوت واتساب احترافي بالكامل، سرعة فائقة، دعم تقني، وتحديثات لا نهائية. الجيل القادم من الأتمتة.</p>
+                        <div class="live-line"><span>🔴 LIVE 24/7 | استجابة فورية</span></div>
+                        <div class="buttons"><div class="btn"><i class="fab fa-whatsapp"></i> القناة الرسمية</div><div class="btn"><i class="fas fa-terminal"></i> API البوت</div><div class="btn"><i class="fab fa-github"></i> GitHub</div></div>
+                        <div class="site-link"><i class="fas fa-link"></i> jawadbot.official</div>
+                    </div>
+                    <div class="right">
+                        <div class="right-head"><span>SYSTEM CORE</span><span class="online">🟢 ONLINE</span></div>
+                        <div class="orbit-box"><div class="orbit"><i class="fab fa-whatsapp i1"></i><i class="fas fa-microchip i2"></i><i class="fas fa-brain i3"></i><i class="fas fa-bolt i4"></i></div><div class="core"><span>JAWAD</span></div></div>
+                        <div class="stats"><div><h4>0.08s</h4><p>زمن الاستجابة</p></div><div><h4>100%</h4><p>uptime</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="real-site">
+        <header><div class="div-list"><ul class="ul-list"><li class="active"><i class="fas fa-home"></i><a href="#home">الرئيسية</a></li><li><i class="fas fa-user-astronaut"></i><a href="#about">نبذة</a></li><li><i class="fas fa-project-diagram"></i><a href="#project">المشاريع</a></li><li><i class="fas fa-cogs"></i><a href="#service">الخدمات</a></li><li><i class="fas fa-phone-alt"></i><a href="#contact">اتصل</a></li></ul></div></header>
+
+        <section class="home" id="home">
+            <div class="home-container"><div class="home-section"><p class="home-p"><i class="fas fa-bolt"></i> JAWAD.BOT | روبوت واتساب ذكي</p><div class="info-home"><h1>JAWAD.BOT</h1><h3>مطور بوتات واتساب و أنظمة ذكاء</h3><div class="info-p"><p>أنا جواد، مطور متخصص في إنشاء بوتات واتساب فائقة الأداء مع واجهات تحكم متطورة.</p><p>أقدم حلولاً رقمية تلبي احتياجات الأفراد والشركات.</p></div><div class="info-p2"><p><i class="fas fa-map-marker-alt"></i> المغرب، الدار البيضاء</p><p><i class="fas fa-calendar-check"></i> متاح للتعاون الفوري</p></div><div class="btnn"><button class="btn-home1" id="channelBtn"><i class="fab fa-whatsapp"></i> انضم للقناة</button><button class="btn-home2" id="resumeBtn"><i class="fas fa-file-alt"></i> السيرة الذاتية</button></div><div class="follow"><p>تابعني :</p><ul><li><a href="https://github.com/darkxecutor" target="_blank"><i class="fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/dark-xecutor-489b01381/" target="_blank"><i class="fab fa-linkedin"></i></a></li><li><a href="https://www.instagram.com/hiromi_hiiguruma" target="_blank"><i class="fab fa-instagram"></i></a></li><li><a href="https://www.youtube.com/@PythonCyberShield" target="_blank"><i class="fab fa-youtube"></i></a></li><li><a href="https://whatsapp.com/channel/0029Vb660XQ65yDGjrTGBM3g" target="_blank"><i class="fab fa-whatsapp"></i></a></li></ul></div></div></div><div class="from-right"><img src="https://i.postimg.cc/V674SNrg/Whats-App-Image-2026-04-26-at-12-53-42-PM.jpg" alt="JAWAD BOT"></div></div>
+        </section>
+
+        <section class="about reveal" id="about"><div class="about-info"><div class="img-about"><img src="https://i.postimg.cc/xCd3SSsZ/Whats-App-Image-2026-04-26-at-12-53-42-PM(1).jpg" alt="profile"></div><div class="info-text"><h5>@JAWAD_Dev</h5><p>مهندس بوتات واتساب</p></div></div><h3>رؤيتي التقنية</h3><div class="about-info2"><div class="about-text"><p>أنا <span>جواد</span> مطور معتمد في مجال البوتات المتطورة، أقدم بوتات واتساب لا مثيل لها مع تكامل سحابي وكفاءة عالية.</p><p>أؤمن بأن الأتمتة الذكية تغير قواعد اللعبة، لذلك أركز على السرعة والحماية والتطوير المستمر.</p><p><span>#</span> تصميم بوتات WhatsApp Business API<br><span>#</span> لوحات تحكم متقدمة + React <br><span>#</span> تكامل الذكاء الاصطناعي والردود الآلية</p></div><div class="photo-container"><img src="https://i.postimg.cc/V674SNrg/Whats-App-Image-2026-04-26-at-12-53-42-PM.jpg" alt="bot dev"><span class="tape tape1"></span><span class="tape tape2"></span></div></div></section>
+
+        <section class="project reveal" id="project"><p>أعمالي</p><h1>مشاريع البوتات</h1><div class="projects-container"><div class="project-card"><img src="https://i.postimg.cc/V674SNrg/Whats-App-Image-2026-04-26-at-12-53-42-PM.jpg" alt="bot1"><h3>JAWAD.AI</h3><p>بوت ذكي يدعم الأوامر الصوتية والنصية، تحميل المحتوى، وإدارة المجموعات.</p><div class="skills"><a>Node.js</a><a>WhatsApp Web</a></div><div class="btns"><a href="#" class="btn">GitHub</a></div></div><div class="project-card"><img src="https://i.postimg.cc/xCd3SSsZ/Whats-App-Image-2026-04-26-at-12-53-42-PM(1).jpg" alt="dashboard"><h3>لوحة التحكم</h3><p>واجهة متكاملة لإدارة البوت وإحصائيات المستخدمين بشكل آني.</p><div class="skills"><a>React</a><a>Tailwind</a></div><div class="btns"><a href="#" class="btn">تجربة حية</a></div></div><div class="project-card"><img src="https://i.postimg.cc/V674SNrg/Whats-App-Image-2026-04-26-at-12-53-42-PM.jpg" alt="support"><h3>نظام الردود التلقائية</h3><p>بوت دعم فني على مدار الساعة بقاعدة معرفية ضخمة.</p><div class="skills"><a>Python</a><a>MongoDB</a></div><div class="btns"><a href="#" class="btn">مشاهدة</a></div></div></div></section>
+
+        <section id="service" class="services reveal"><p>الخدمات التقنية</p><h1>مجالات الخبرة</h1><div class="services-grid"><div class="service-card"><div class="service-icon"><i class="fab fa-whatsapp"></i></div><h3>تطوير بوتات واتساب</h3><p>بوتات احترافية بمميزات مخصصة (إرسال، تحميل، جدولة، أوامر صوتية).</p><div class="service-features"><span>حماية عالية</span><span>استجابة سريعة</span></div></div><div class="service-card"><div class="service-icon"><i class="fas fa-chalkboard-user"></i></div><h3>استشارات برمجية</h3><p>تخطيط وتنفيذ مشاريع الأتمتة والذكاء الاصطناعي.</p><div class="service-features"><span>دعم فني</span><span>تحديثات مستمرة</span></div></div></div></section>
+
+        <section id="contact" class="reveal"><h2 class="section-title">تواصل مع المطور</h2><div class="contact-content"><div class="contact-info"><p>جاهز لبناء بوت واتساب احترافي؟ تواصل معي فوراً.</p><div class="contact-details"><div class="contact-item"><i class="fas fa-envelope"></i><span>darkxecutor@gmail.com</span></div><div class="contact-item"><i class="fas fa-phone-alt"></i><span>+212 771-642822</span></div></div><div class="social-links"><a href="https://github.com/darkxecutor" class="social-link"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/dark-xecutor-489b01381/" class="social-link"><i class="fab fa-linkedin"></i></a><a href="https://www.instagram.com/hiromi_hiiguruma" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://whatsapp.com/channel/0029Vb660XQ65yDGjrTGBM3g" class="social-link"><i class="fab fa-whatsapp"></i></a></div></div><div class="contact-form"><form id="contactForm"><div class="form-group"><input type="text" placeholder="الاسم الكامل" required></div><div class="form-group"><input type="email" placeholder="البريد الإلكتروني" required></div><div class="form-group"><textarea rows="5" placeholder="تفاصيل المشروع..."></textarea></div><button type="submit">إرسال الطلب <i class="fas fa-paper-plane"></i></button></form></div></div>
+        
+        <div class="whatsapp-card"><h2><i class="fab fa-whatsapp"></i> JAWAD.BOT | القناة الرسمية</h2><p>🍄 القناة الرسمية ديال البوت فين كنتشاركو معاكم:<br>> تحديثات 💡 JAWAD.BOT الجديدة 🕸️<br>> أوامر 📜 حصرية تحت التجريب<br>تابع قناتنا ودعمنا وشكرا 🖇️<br><br>🖇️ Dev: جواد | MA 🇲🇦<br>Portfolio: <a href="https://darkxecutor.github.io/portfolio1/" style="color:#A594F9;">darkxecutor.github.io/portfolio1/</a><br>📌 web development<br>📌 GitHub: github.com/darkxecutor<br>تابع قناتنا ليصلك كل جديد 📢</p><a href="https://whatsapp.com/channel/0029Vb660XQ65yDGjrTGBM3g" target="_blank" class="channel-link"><i class="fab fa-whatsapp"></i> انضم إلى القناة الآن</a></div></section>
+    </div>
+
+    <script>
+        (function(){
+            const intro = document.getElementById('intro'), real = document.getElementById('real-site');
+            real.style.display = 'none';
+            setTimeout(()=>{ intro.classList.add('smooth-out'); setTimeout(()=>{ intro.style.display='none'; real.style.display='block'; document.body.style.overflow='auto'; document.querySelectorAll('.reveal').forEach(el=>{ if(el.getBoundingClientRect().top<window.innerHeight-100) el.classList.add('active'); }); },900); },2100);
+        })();
+        document.querySelectorAll('.ul-list a').forEach(a=>{ a.addEventListener('click',function(e){ e.preventDefault(); const target=document.querySelector(this.getAttribute('href')); if(target){ target.scrollIntoView({behavior:'smooth'}); document.querySelectorAll('.ul-list li').forEach(l=>l.classList.remove('active')); this.parentElement.classList.add('active'); } }); });
+        window.addEventListener('scroll',()=>{ let scroll=window.scrollY+150; document.querySelectorAll('section').forEach(sec=>{ let top=sec.offsetTop, id=sec.getAttribute('id'); if(scroll>=top && scroll<top+sec.offsetHeight){ document.querySelectorAll('.ul-list li').forEach(li=>{ li.classList.remove('active'); let link=li.querySelector('a'); if(link && link.getAttribute('href')===`#${id}`) li.classList.add('active'); }); } }); });
+        const observer=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('active'); }); },{threshold:0.15});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+        document.getElementById('contactForm')?.addEventListener('submit',(e)=>{ e.preventDefault(); alert('✅ تم إرسال طلبك بنجاح، سأتواصل معك قريباً.'); e.target.reset(); });
+        document.getElementById('channelBtn')?.addEventListener('click',()=>window.open('https://whatsapp.com/channel/0029Vb660XQ65yDGjrTGBM3g','_blank'));
+        document.getElementById('resumeBtn')?.addEventListener('click',()=>alert('📄 يمكنك طلب السيرة التفصيلية عبر البريد الإلكتروني.'));
+        document.querySelectorAll('.buttons .btn').forEach(btn=>btn.addEventListener('click',()=>alert(`✨ مرحباً بك في JAWAD.BOT - الخدمات متاحة على الواتساب.`)));
+    </script>
+</body>
+</html>
