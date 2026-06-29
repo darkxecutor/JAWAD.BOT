@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NUVIXO Roadmap</title>
+<title>NUVIXO Tracker</title>
+
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -11,26 +12,20 @@
 <body>
 
 <header>
-<h1>🚀 NUVIXO Roadmap</h1>
-<p>رحلة تعلم البرمجة والأمن السيبراني</p>
-<button id="darkToggle">🌙</button>
+<h1>📊 NUVIXO Study Tracker</h1>
+<p>تتبع تقدمك اليومي بطريقة ذكية</p>
 </header>
-
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="roadmap.html">الخطة</a>
-<a href="achievements.html">الإنجازات</a>
-<a href="notes.html">الملاحظات</a>
-</nav>
 
 <section class="dashboard">
 
 <div class="card">
-<h3>التقدم</h3>
-<div class="progress-bar">
-<div id="progressFill"></div>
+<h3>Score</h3>
+<h1 id="score">0</h1>
 </div>
-<p id="progressText">0%</p>
+
+<div class="card">
+<h3>Status</h3>
+<h1 id="status">---</h1>
 </div>
 
 <div class="card">
@@ -38,28 +33,29 @@
 <h1 id="level">1</h1>
 </div>
 
-<div class="card">
-<h3>XP</h3>
-<h1 id="xp">0</h1>
-</div>
-
-</section>
-
-<section class="progress">
-<canvas id="progressChart"></canvas>
 </section>
 
 <section class="tasks">
 <h2>مهام اليوم</h2>
-<ul>
-<li><input type="checkbox"> C++</li>
-<li><input type="checkbox"> Python</li>
-<li><input type="checkbox"> Linux</li>
-<li><input type="checkbox"> Networking</li>
-<li><input type="checkbox"> Cyber Security</li>
-</ul>
+
+<label><input type="checkbox"> C++</label><br>
+<label><input type="checkbox"> Python</label><br>
+<label><input type="checkbox"> Linux</label><br>
+<label><input type="checkbox"> Networking</label><br>
+<label><input type="checkbox"> Cybersecurity</label><br>
+
+<button onclick="saveDay()">📅 حفظ اليوم</button>
+</section>
+
+<section class="chart">
+<canvas id="barChart"></canvas>
+</section>
+
+<section class="history">
+<h2>📅 سجل الأيام</h2>
+<ul id="historyList"></ul>
 </section>
 
 <script src="app.js"></script>
 </body>
-</html>
+  </html>
