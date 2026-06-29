@@ -8,22 +8,7 @@ color:white;
 header{
 text-align:center;
 padding:20px;
-background:#1e293b;
-}
-
-nav{
-display:flex;
-justify-content:center;
-gap:10px;
 background:#111827;
-padding:10px;
-flex-wrap:wrap;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-padding:8px 12px;
 }
 
 .dashboard{
@@ -38,21 +23,8 @@ margin:20px;
 background:#1e293b;
 padding:15px;
 border-radius:10px;
-width:150px;
+width:120px;
 text-align:center;
-}
-
-.progress-bar{
-background:#334155;
-height:15px;
-border-radius:10px;
-overflow:hidden;
-}
-
-#progressFill{
-height:100%;
-width:0%;
-background:#22c55e;
 }
 
 .tasks{
@@ -63,12 +35,26 @@ border-radius:10px;
 }
 
 button{
-padding:8px;
+padding:10px;
+margin-top:10px;
 border:none;
 border-radius:8px;
-cursor:pointer;
+background:#22c55e;
+color:black;
+font-weight:bold;
 }
 
-body.dark{
-background:#000;
+.chart{
+width:90%;
+margin:auto;
+background:#1e293b;
+padding:15px;
+border-radius:10px;
 }
+
+.history{
+margin:20px;
+padding:15px;
+background:#1e293b;
+border-radius:10px;
+  }
