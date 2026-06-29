@@ -1,46 +1,79 @@
 const checkboxes = document.querySelectorAll("input[type='checkbox']");
-const ctx = document.getElementById("progressChart").getContext("2d");
 
+const ctx = document.getElementById("barChart").getContext("2d");
+
+let data = JSON.parse(localStorage.getItem("days") || "[]");
+
+// BAR CHART
 let chart = new Chart(ctx,{
-type:"doughnut",
+type:"bar",
 data:{
-labels:["done","left"],
-datasets:[{data:[0,100],backgroundColor:["#22c55e","#334155"]}]
+labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+datasets:[{
+label:"Progress %",
+data:data,
+backgroundColor:"#22c55e"
+}]
+},
+options:{
+scales:{
+y:{beginAtZero:true,max:100}
+}
 }
 });
 
+// update score
 function update(){
 
-let done=0;
-checkboxes.forEach(c=>{if(c.checked)done++;});
+let done = 0;
+checkboxes.forEach(c=>{if(c.checked) done++;});
 
-let percent=Math.round((done/checkboxes.length)*100);
+let score = Math.round((done/checkboxes.length)*100);
 
-document.getElementById("progressText").innerText=percent+"%";
-document.getElementById("progressFill").style.width=percent+"%";
+document.getElementById("score").innerText = score;
 
-document.getElementById("xp").innerText=done*20;
-document.getElementById("level").innerText=Math.floor(done/2)+1;
+// status
+let status = "ضعيف";
+if(score>=80) status="ممتاز 🔥";
+else if(score>=50) status="متوسط";
+else status="ضعيف ⚠️";
 
-chart.data.datasets[0].data=[percent,100-percent];
+document.getElementById("status").innerText = status;
+
+// level
+document.getElementById("level").innerText = Math.floor(score/20)+1;
+}
+
+// save day
+function saveDay(){
+
+let done = 0;
+checkboxes.forEach(c=>{if(c.checked) done++;});
+
+let score = Math.round((done/checkboxes.length)*100);
+
+let day = new Date().getDay();
+
+data[day] = score;
+
+localStorage.setItem("days",JSON.stringify(data));
+
+chart.data.datasets[0].data = data;
 chart.update();
 
-localStorage.setItem("data",JSON.stringify([...checkboxes].map(c=>c.checked)));
+addHistory(score);
 }
 
+// history
+function addHistory(score){
+
+let li = document.createElement("li");
+li.innerText = "📅 يوم: " + score + "%";
+
+document.getElementById("historyList").appendChild(li);
+}
+
+// init
 checkboxes.forEach(c=>c.addEventListener("change",update));
 
-window.onload=()=>{
-
-let saved=JSON.parse(localStorage.getItem("data"));
-if(saved){
-checkboxes.forEach((c,i)=>c.checked=saved[i]);
-}
-
 update();
-};
-
-// Dark mode
-document.getElementById("darkToggle").onclick=()=>{
-document.body.classList.toggle("dark");
-}
